@@ -1,23 +1,10 @@
 import sys
-import subprocess
-import os
-
-def play_sound(file):
-    if os.path.exists(file):
-        try:
-            subprocess.run(["ffplay", "-nodisp", "-autoexit", file], check=True)
-        except Exception as e:
-            print(f"Error playing sound: {e}")
-    else:
-        print(f"Sound file '{file}' not found.")
 
 def cat():
     print('Meow!')
-    play_sound('cat.wav')
 
 def dog():
     print('Woof!')
-    play_sound('dog.wav')
 
 def default():
     print('Hello')
