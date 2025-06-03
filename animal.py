@@ -6,26 +6,25 @@ def cat():
 def dog():
     print('Woof!')
 
-def default():
-    print('Hello')
+def default(user_input):
+    print('Hello, ' + user_input)
 
 def main():
-    if len(sys.argv) > 1:
-        command = sys.argv[1]
+    if len(sys.argv) < 2:
+        user_input = input('Enter an argument (cat/dog): ').strip()
+        while not user_input:
+            user_input = input('Enter an argument (cat/dog): ').strip()
     else:
-        command = input("Please enter an argument (e.g., 'cat' or 'dog'): ").strip()
+        user_input = sys.argv[1].strip()
 
-    command = command.lower()
+    input_lower = user_input.lower()
 
-    if command == 'cat':
+    if input_lower == 'cat':
         cat()
-    elif command == 'dog':
+    elif input_lower == 'dog':
         dog()
-    elif command == '':
-        print('Please give an argument')
     else:
-        default()
+        default(user_input)
 
 if __name__ == '__main__':
     main()
-
